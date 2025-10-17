@@ -4,6 +4,10 @@ ENV N8N_BASIC_AUTH_ACTIVE=true
 ENV N8N_BASIC_AUTH_USER=admin
 ENV N8N_BASIC_AUTH_PASSWORD=admin
 
-EXPOSE 5678
+ENV N8N_PORT=${PORT}
+ENV N8N_PROTOCOL=http
+ENV N8N_HOST=0.0.0.0
 
-CMD ["n8n", "start", "--port", "5678"]
+EXPOSE ${PORT}
+
+CMD ["sh", "-c", "n8n start --port ${PORT}"]
